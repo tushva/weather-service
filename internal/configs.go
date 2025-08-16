@@ -20,7 +20,7 @@ func LoadConfig() (*Config, error) {
 	decoder := json.NewDecoder(file)
 	err := decoder.Decode(&config)
 	if err != nil {
-		mylogger.Logger.Error("Error reading config %s", err.Error())
+		mylogger.Logger.Error("Error reading config %s", err.Error(), nil)
 		return nil, err
 	}
 	return &config, nil

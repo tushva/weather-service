@@ -63,7 +63,7 @@ func forecastHandler(resp http.ResponseWriter, req *http.Request) {
 		return
 	}
 	weatherURL := fmt.Sprintf(configs.WeatherHost+configs.WeatherEndpoint+"%s,%s"+"/forecast", strconv.Itoa(x), strconv.Itoa(y))
-	forecaseResponse, err := internal.GetForecastedWeater(ctx, weatherURL)
+	forecastResponse, err := internal.GetForecastedWeater(ctx, weatherURL)
 	if err != nil {
 		logger.Error("Error fetching response from weather service: %s", err.Error(), nil)
 		resp.WriteHeader(http.StatusInternalServerError)
@@ -71,7 +71,7 @@ func forecastHandler(resp http.ResponseWriter, req *http.Request) {
 	}
 	resp.WriteHeader(http.StatusOK)
 	resp.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(resp).Encode(forecaseResponse)
+	json.NewEncoder(resp).Encode(forecastResponse)
 }
 
 func healthHandler(resp http.ResponseWriter, req *http.Request) {

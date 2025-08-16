@@ -1,4 +1,4 @@
-package api
+package model
 
 type Period struct {
 	Number           int64  `json:"number"`
@@ -21,3 +21,9 @@ type ForecastResponse struct {
 	ShortForecast    string `json:"shortForecast"`
 	Characterization string `json:"characterization"`
 }
+
+const (
+	Hot      = "hot"
+	Moderate = "moderate"
+	Cold     = "cold"
+)
